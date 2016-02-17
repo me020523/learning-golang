@@ -1,4 +1,4 @@
-package testpacka
+package pack
 
 import "fmt"
 
