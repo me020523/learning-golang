@@ -1,7 +1,7 @@
 package main
 
 import (
-	"pack"
+	"./pack"
 	"fmt"
 )
 
