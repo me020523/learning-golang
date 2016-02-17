@@ -6,7 +6,7 @@ import (
 )
 
 func main(){
-	testpacka.Test()
-	testpacka.TestB()
+	pack.Test()
+	pack.TestB()
 	fmt.Println("Hello, test pack")
 }
