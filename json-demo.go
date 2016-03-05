@@ -11,6 +11,28 @@ type Message struct {
     Time int64
 }
 
+type Animal interface {
+    func say()
+}
+
+type HumanAnimal struct {
+    Name string
+    age int
+}
+func (human HumanAnimal) say() {
+    log.Println("I am a human")
+}
+
+type DogAnimal struct {
+    Name string
+}
+
+func (dog DogAnimal) say(){
+    log.Println("I am a dog")
+}
+
+
+
 func Marshal(){
     m := Message{"Alice", "Hello", 1294706395881547000}   
     b, err := json.Marshal(m)
