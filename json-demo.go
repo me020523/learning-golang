@@ -12,14 +12,14 @@ type Message struct {
 }
 
 type Animal interface {
-    func say()
+    Say()
 }
 
 type HumanAnimal struct {
     Name string
-    age int
+    Age int
 }
-func (human HumanAnimal) say() {
+func (human HumanAnimal) Say() {
     log.Println("I am a human")
 }
 
@@ -27,11 +27,34 @@ type DogAnimal struct {
     Name string
 }
 
-func (dog DogAnimal) say(){
+func (dog DogAnimal) Say(){
     log.Println("I am a dog")
 }
 
+func UnmarshalToInterface(){
+    jsonString := `
+        [
+            {
+                "Type": "Dog",
+                "Name": "Ted"
+            },
+            {
+                "Type": "Human",
+                "Name": "Marry",
+                "Age": "11"
+            }
+        ]
+    `
+    var animals []Animal
+    err := json.Unmarshal([]byte(jsonString), &animals)
+    if(err != nil){
+        log.Fatal(err)
+    }
 
+    for _, animal := range animals {
+        animal.Say()
+    }
+}
 
 func Marshal(){
     m := Message{"Alice", "Hello", 1294706395881547000}   
@@ -55,5 +78,5 @@ func Unmarshal(){
     log.Println(string(b))
 }
 func main() { 
-    Unmarshal()
+    UnmarshalToInterface()
 }

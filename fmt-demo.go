@@ -30,7 +30,7 @@ func fmtInteger(){
 	fmt.Printf("%#x\n", testInt)
 	fmt.Printf("%-03#X\n", testInt)
 	fmt.Printf("%-03#q\n", testInt)
-	fmt.Printf("%-03#c\n", testInt)
+	fmt.Printf("%c\n", testInt)
 	fmt.Printf("%-03#U\n", testInt)
 }
 
@@ -74,5 +74,6 @@ func main() {
 	//fmtPointer()
 	//fmtStruct()
 	//fmtFloating()
-	demoScanf()
+	//demoScanf()
+	fmtInteger()
 }
