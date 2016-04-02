@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	a := algorithm.ReverseInteger(1534236469)
+	a := algorithm.IsPalindrome(10)
 	fmt.Println(a)
 }
