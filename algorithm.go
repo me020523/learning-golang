@@ -6,10 +6,6 @@ import (
 )
 
 func main() {
-	str := "PAYPALISHIRING"
-	//rowNums: = 3
-	//str := "ABCDEF"
-	rowNums := 9
-	out := algorithm.Convert(str, rowNums)
-	fmt.Println(out)	
+	a := algorithm.ReverseInteger(1534236469)
+	fmt.Println(a)
 }
