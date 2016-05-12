@@ -10,7 +10,11 @@ type Message struct {
     Body string
     Time int64
 }
-
+type SubMessage struct {
+    SName string    `json,yaml:"name"`
+    SBody string    `json:"body"`
+    STime int    `json:"time"`
+}
 type Animal interface {
     Say()
 }
@@ -35,17 +39,16 @@ func UnmarshalToInterface(){
     jsonString := `
         [
             {
-                "Type": "Dog",
-                "Name": "Ted"
+                "Name": "Ted",
+                "Age": 12
             },
             {
-                "Type": "Human",
                 "Name": "Marry",
-                "Age": "11"
+                "Age": 11
             }
         ]
     `
-    var animals []Animal
+    var animals []*HumanAnimal
     err := json.Unmarshal([]byte(jsonString), &animals)
     if(err != nil){
         log.Fatal(err)
@@ -77,6 +80,20 @@ func Unmarshal(){
     }
     log.Println(string(b))
 }
+func SubUnmarshal(){
+    jsonString := []byte(`{"name":"Bob", "body":"Hello", "time":1294706395881547000, "other":"world"}`)
+    var m SubMessage
+    err := json.Unmarshal(jsonString, &m)
+    if(err != nil){
+        log.Fatal(err)
+    }
+    b, err := json.Marshal(m)
+    if(err != nil){
+        log.Fatal(err)
+    }
+    log.Println(string(b))
+}
 func main() { 
     UnmarshalToInterface()
+//    SubUnmarshal()
 }

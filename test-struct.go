@@ -28,8 +28,15 @@ func demoFunc_2(){
 	}
 	fmt.Println(string(b))
 }
-
+func (p *Person) show() {
+   fmt.Println(p.Name)
+}
 func main(){
-	demoFunc_1()
-	demoFunc_2()
+	//demoFunc_1()
+	//demoFunc_2()
+        p := Person{
+          Name: "Bin",
+          Age: 26,
+        }
+        p.show()
 }
