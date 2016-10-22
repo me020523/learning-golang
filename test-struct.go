@@ -1,42 +1,49 @@
 package main
 
 import (
-	"fmt"
 	"encoding/json"
+	"fmt"
 )
 
 type Person struct {
 	Name string
-	Age int
+	Age  int
 }
-func demoFunc_1(){
+
+func demoFunc_1() {
 	p := Person{"Tom", 15}
 
 	b, err := json.Marshal(p)
-	if(err != nil){
+	if err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(string(b))
 }
 
-func demoFunc_2(){
+func demoFunc_2() {
 	p := Person{Age: 15}
 
 	b, err := json.Marshal(p)
-	if(err != nil){
+	if err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(string(b))
 }
 func (p *Person) show() {
-   fmt.Println(p.Name)
+	fmt.Println(p.Name)
 }
-func main(){
+func main() {
 	//demoFunc_1()
 	//demoFunc_2()
-        p := Person{
-          Name: "Bin",
-          Age: 26,
-        }
-        p.show()
+	p := Person{
+		Name: "Bin",
+		Age:  26,
+	}
+	p.show()
+
+	q := &Person{
+		Name: "Cheng",
+		Age:  27,
+	}
+	q.show()
 }

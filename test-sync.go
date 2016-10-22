@@ -34,7 +34,25 @@ func testLocal() {
 	fmt.Println(i)
 }
 
+func testLock() {
+	var lock sync.RWMutex
+	var wg sync.WaitGroup
+	wg.Add(3)
+	count := 0
+	for i := 0; i < 3; i++ {
+		go func() {
+			lock.Lock()
+			count++
+			lock.Unlock()
+			wg.Done()
+		}()
+	}
+	wg.Wait()
+	fmt.Println(count)
+}
+
 func main() {
 	//testWaitGroup()
-	testLocal()
+	//testLocal()
+	testLock()
 }

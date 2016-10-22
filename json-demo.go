@@ -41,7 +41,8 @@ func UnmarshalToInterface(){
             {
                 "Name": "Ted",
                 "Age": 12
-            },
+            }
+,
             {
                 "Name": "Marry",
                 "Age": 11
