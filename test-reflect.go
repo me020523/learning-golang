@@ -6,10 +6,13 @@ import (
 )
 
 func inspectStruct() {
+
 	var testStruct struct {
+		string
 		left  int `validator:"min:1;max:10"`
 		right int `validator:"min:1;max:10"`
 	}
+	testStruct.string = "123"
 	testStruct.left = 15
 	testStruct.right = 5
 
@@ -22,11 +25,18 @@ func inspectStruct() {
 		field := t.Field(i)
 		value := v.Field(i)
 		st := field.Tag
-		fmt.Printf("%s : %d", field.Name, value.Int())
+		fmt.Printf("%s : %s", field.Name, value.String())
+
 		fmt.Printf(" validator: %s\n", st.Get("validator"))
 	}
 }
+func playDeepEqual() {
+	str := "123"
+	ret := reflect.DeepEqual(reflect.ValueOf(str), str)
+	fmt.Println(ret)
+}
 
 func main() {
-	inspectStruct()
+	//inspectStruct()
+	playDeepEqual()
 }
