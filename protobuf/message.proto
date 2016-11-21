@@ -1,0 +1,9 @@
+syntax="proto2";
+
+package protobuf;
+
+message Test {
+required string name = 1;
+required string gender = 2;
+optional int32 age = 3;
+}
