@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 )
 
@@ -14,6 +15,10 @@ type SubMessage struct {
 	SName string `json,yaml:"name"`
 	SBody string `json:"body"`
 	STime int    `json:"time"`
+}
+type MessageWrap struct {
+	Message
+	Other string
 }
 type Animal interface {
 	Say()
@@ -104,6 +109,16 @@ func SubUnmarshal() {
 	}
 	log.Println(string(b))
 }
+func wrapMessageTest() {
+	jsonString := []byte(`{"name":"Bob", "body":"Hello", "time":1294706395881547000, "other":"world"}`)
+	var m MessageWrap
+	err := json.Unmarshal(jsonString, &m)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%v\n", m)
+}
 func main() {
-	UnmarshalMap()
+	//UnmarshalMap()
+	wrapMessageTest()
 }
