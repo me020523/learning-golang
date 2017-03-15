@@ -35,8 +35,22 @@ func playDeepEqual() {
 	ret := reflect.DeepEqual(reflect.ValueOf(str), str)
 	fmt.Println(ret)
 }
-
+func customType() {
+	type MyType int
+	a := MyType(10)
+	t := reflect.TypeOf(a)
+	fmt.Printf("%v\n", t)
+	fmt.Printf("%v\n", t.Kind())
+	var b *MyType = &a
+	*b = 20
+	fmt.Printf("%v\n", a)
+	v := reflect.ValueOf(b)
+	fmt.Printf("%v\n", v)
+	v.Elem().SetInt(100)
+	fmt.Printf("%v", a)
+}
 func main() {
 	//inspectStruct()
-	playDeepEqual()
+	//playDeepEqual()
+	customType()
 }
